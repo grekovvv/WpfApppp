@@ -25,9 +25,9 @@ namespace WpfApppp
     {
         
         private DateTime _startCountdown; // время запуска таймера
-        private TimeSpan _startTimeSpan = TimeSpan.FromSeconds(5);
-        private TimeSpan _startTimeSpan2 = TimeSpan.FromSeconds(3);// начальное время до окончания таймера
-        private TimeSpan _startTimeSpan3 = TimeSpan.FromSeconds(7);
+        private TimeSpan _startTimeSpan = TimeSpan.FromMinutes(25);
+        private TimeSpan _startTimeSpan2 = TimeSpan.FromMinutes(5);// начальное время до окончания таймера
+        private TimeSpan _startTimeSpan3 = TimeSpan.FromMinutes(15);
         private TimeSpan _timeToEnd; // время до окончания таймера. Меняется когда таймер запущен
         private TimeSpan _interval = TimeSpan.FromMilliseconds(300); // интервал таймера
         private DateTime _pauseTime;
@@ -41,7 +41,6 @@ namespace WpfApppp
 
         private MediaPlayer Ew;
         private MediaPlayer Eb;
-        private MediaPlayer BreakSound;
 
         public bool proverkaMusicStart = false;
         public bool proverkaMusicEnd = false;
@@ -56,7 +55,7 @@ namespace WpfApppp
         public void WorkTimer()// таймер работы
         {
             whatistimer = 1;
-            _StartTimeSpan = TimeSpan.FromSeconds(5);
+            _StartTimeSpan = TimeSpan.FromMinutes(25);
             _timer = new DispatcherTimer();
             _timer.Interval = _interval;
             _timer.Tick += delegate
@@ -76,7 +75,7 @@ namespace WpfApppp
         public void BreakTimer()// таймер перерыва
         {
             whatistimer = 0;
-            _StartTimeSpan = TimeSpan.FromSeconds(3);
+            _StartTimeSpan = TimeSpan.FromMinutes(5);
             _timer2 = new DispatcherTimer();
             _timer2.Interval = _interval;
             _timer2.Tick += delegate
@@ -90,7 +89,7 @@ namespace WpfApppp
         public void LongBreakTimer()// таймер перерыва
         {
             whatistimer = 0;
-            _StartTimeSpan = TimeSpan.FromSeconds(8);
+            _StartTimeSpan = TimeSpan.FromMinutes(15);
             _timer3 = new DispatcherTimer();
             _timer3.Interval = _interval;
             _timer3.Tick += delegate
@@ -179,13 +178,39 @@ namespace WpfApppp
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
-
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Properties.Settings.Default.tomatos = tomatos;
+            Properties.Settings.Default.exp = exp;
+            Properties.Settings.Default.tomatForWeeks = tomatForWeeks;
+            Properties.Settings.Default.tomatForMonth = tomatForMonth;
+            Properties.Settings.Default.tomatForYear = tomatForYear;
+            Properties.Settings.Default.dateForWeek = dateForWeek;
+            Properties.Settings.Default.dateForMonth = dateForMonth;
+            Properties.Settings.Default.dateForYear = dateForYear;
+            Properties.Settings.Default.Save();
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DateChanging = DateTime.Now;
             // здесь можно делать то что нужно сделать при загрузке программы
+            DateChanging = DateTime.Now;
             WorkTimer();
             taskWindow = new TaskWindow();
+            exp = Properties.Settings.Default.exp;
+            tomatos = Properties.Settings.Default.tomatos;
+            tomatForWeeks = Properties.Settings.Default.tomatForWeeks;
+            tomatForMonth = Properties.Settings.Default.tomatForMonth;
+            tomatForYear = Properties.Settings.Default.tomatForYear ;
+            dateForWeek = Properties.Settings.Default.dateForWeek;
+            dateForMonth = Properties.Settings.Default.dateForMonth;
+            dateForYear = Properties.Settings.Default.dateForYear;
+
+            countTomatos.Content = tomatos;
+            taskWindow.ForWeek.Content = TomatosForWeek;
+            taskWindow.ForMonth.Content = TomatosForMonth;
+            taskWindow.ForYear.Content = TomatosForYear;
+            taskWindow.All.Content = Tomatos;
+
         }
         #region Методы кнопок
         private void EventStopTimer()
@@ -224,7 +249,6 @@ namespace WpfApppp
             StartB.Visibility = Visibility.Hidden;
             PauseB.Visibility = Visibility.Visible;
         }
-
         private void Stop_click(object sender, RoutedEventArgs e)
         {
             EventStopTimer();
@@ -248,11 +272,12 @@ namespace WpfApppp
         }
         private void HideMainWindow(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized;
         }
         private void Cancel_Window(object sender, RoutedEventArgs e)
         {
             // Закрываем текущее приложение.
+            
             Application.Current.Shutdown();
         }// кнопка закрытия приложения
         #endregion
@@ -282,14 +307,13 @@ namespace WpfApppp
         {
             // назначает владельцем окно main
             taskWindow.Owner = this;
-            taskWindow.ForWeek.Content = TomatosForWeek;
-            taskWindow.ForMonth.Content = TomatosForMonth;
-            taskWindow.ForYear.Content = TomatosForYear;
 
+            
             //Проверить, узнать как проверить.
             DateForWeek();
             DateForMonth();
             DateForYear();
+            RankAndExp();
             if (taskWindow.IsActive == false)
             {
                 taskWindow.Show();

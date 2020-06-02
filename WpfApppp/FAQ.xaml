@@ -92,7 +92,7 @@
     </Style>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\grrek\source\repos\WpfApppp\WpfApppp\Res\faq.png"></ImageBrush>
+        <ImageBrush ImageSource="C:\Users\grrek\source\repos\WpfApppp\WpfApppp\Res\faq2.png"></ImageBrush>
     </Window.Background>
     <Grid>
         <Label x:Name="UserName" Content="FAQ" HorizontalAlignment="Left" Margin="159,51,0,0" VerticalAlignment="Top" Width="141" Background="{x:Null}" FontSize="35" HorizontalContentAlignment="Center" FontFamily="American Captain" Height="50">

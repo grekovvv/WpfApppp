@@ -176,7 +176,7 @@
                     <GradientStop Color="#FFB81313" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Label x:Name="rankName" Content="Новичок" Margin="22,-1,19,-4" HorizontalAlignment="Center" Width="84" Padding="1,5" HorizontalContentAlignment="Center" FontFamily="Verdana Pro Black" Background="{x:Null}" FontSize="10"   >
+            <Label x:Name="rankName" Content="Новичок" Margin="-1,-1,-1,-4" HorizontalAlignment="Center" Width="127" Padding="1,5" HorizontalContentAlignment="Center" FontFamily="Verdana Pro Black" Background="{x:Null}" FontSize="10"   >
                 <Label.Foreground>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>

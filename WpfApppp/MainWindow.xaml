@@ -192,7 +192,7 @@
         <Button x:Name="ReleaseB" Content="RELEASE" HorizontalAlignment="Left" Height="32" Margin="172,330,0,0" VerticalAlignment="Top" Width="178" Click="Release_click" Style="{StaticResource MyStackPanelStyle}" BorderThickness="0" Foreground="White" BorderBrush="{x:Null}" FontFamily="Rockwell Nova Extra Bold" FontSize="30"  Background="{x:Null}" Visibility="Hidden"  />
         <Button x:Name="StopB" Content="STOP" HorizontalAlignment="Left" Margin="209,368,0,0" VerticalAlignment="Top" Width="106" Height="36" Click="Stop_click" Style="{StaticResource MyStackPanelStyle}" BorderThickness="0"  Foreground="White" BorderBrush="{x:Null}" FontFamily="Rockwell Nova Extra Bold" FontSize="30"  Background="{x:Null}" Visibility="Hidden"  />
         <Label x:Name="labelTimer" Content="25:00" FontSize="65" HorizontalAlignment="Center" VerticalAlignment="Center" Height="90" Margin="139,244,124,191" Width="262" Foreground="White" FontFamily="Rockwell Nova Extra Bold" TextOptions.TextHintingMode="Animated" RenderTransformOrigin="0.5,0.5"/>
-        <Label x:Name ="countTomatos" Content="0" HorizontalAlignment="Left" Margin="248,230,0,0" VerticalAlignment="Top" FontFamily="Wet Dreamz" FontWeight="Bold" Foreground="#FF86D8FF" Height="28" Width="36" FontSize="20"/>
+        <Label x:Name ="countTomatos" Content="0" HorizontalAlignment="Left" Margin="234,230,0,0" VerticalAlignment="Top" FontFamily="Wet Dreamz" FontWeight="Bold" Foreground="#FF86D8FF" Height="28" Width="54" FontSize="20" HorizontalContentAlignment="Center"/>
         <Button Style="{StaticResource Profile}" Click="NewWindow"  Content ="Profile" Margin="219,468,221,29" Foreground="White" FontFamily="American Captain" FontSize="22"/>
 
 

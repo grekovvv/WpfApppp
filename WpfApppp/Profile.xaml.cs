@@ -34,7 +34,7 @@ namespace WpfApppp
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+           Hide();
         }
 
         private void CheckBoxWork(object sender, RoutedEventArgs e)

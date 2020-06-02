@@ -10,16 +10,16 @@ namespace WpfApppp
 {
     public partial class MainWindow
     {
-        public int tomatos = 0;
-        private DateTime dateForWeek = DateTime.Today;
-        private DateTime dateForMonth = DateTime.Today;
-        private DateTime dateForYear = DateTime.Today;
+        public int tomatos;
+        private DateTime dateForWeek;
+        private DateTime dateForMonth;
+        private DateTime dateForYear;
         private  DateTime date2;
-        private int tomatForWeeks = 0;
-        private int tomatForMonth = 0;
-        private int tomatForYear = 0;
+        private int tomatForWeeks;
+        private int tomatForMonth;
+        private int tomatForYear;
 
-        public int exp = 0;
+        public int exp;
         public string[] rank = new string[] { "Новичок", "Эксперт", "Профессионал", "Магистр", "Рыцарь", "Король", "Властелин" };
 
         public int TomatosForWeek
@@ -40,7 +40,7 @@ namespace WpfApppp
         public int Tomatos
         {
             get { return tomatos; }
-            set { tomatos = value; }
+            set {tomatos = value; }
         }
 
         #region Реализация контроля дат
@@ -77,17 +77,29 @@ namespace WpfApppp
         public DateTime ADateForWeek
         {
             get { return dateForWeek;}
-            set { dateForWeek = value; }
+            set {
+                if (dateForWeek == null)
+                dateForWeek = DateTime.Today;
+                dateForWeek = value;
+            }
         }
         public DateTime ADateForMonth
         {
             get { return dateForMonth; }
-            set { dateForMonth = value; }
+            set {
+                if (dateForMonth == null)
+                    dateForMonth = DateTime.Today;
+                dateForMonth = value;
+            }
         }
         public DateTime ADateForYear
         {
             get { return dateForYear; }
-            set { dateForYear = value; }
+            set {
+                if (dateForYear == null)
+                    dateForYear = DateTime.Today;
+                dateForYear = value;
+            }
         }
         public DateTime DateChanging
         {
